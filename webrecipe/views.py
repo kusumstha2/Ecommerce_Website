@@ -2,14 +2,13 @@ from django.shortcuts import render,redirect,get_object_or_404
 # from django.http import HttpResponseRedirect
 from .models import *
 from django.contrib import messages
-from .forms import *
+from webrecipe.forms import *
 
 # Create your views here.
 def home(request):
     queryset=Recipe.objects.all()
     context={'ri':queryset}
     return render(request,'home.html',context)
-    
 
 def create(request):
     submitted=False

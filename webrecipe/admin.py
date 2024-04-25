@@ -17,5 +17,5 @@ class RecipeAdmin(admin.ModelAdmin):
     ordering=('name',)
     search_fields = ('name','category__name')
     list_filter= ('category',)
-    # autocomplete_fields=('')
+    # autocomplete_fields=('') 
     list_per_page=10
