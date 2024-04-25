@@ -6,7 +6,7 @@ from webrecipe.forms import *
 
 # Create your views here.
 def home(request):
-    queryset=Recipe.objects.all()
+    queryset=Product.objects.all()
     context={'ri':queryset}
     return render(request,'home.html',context)
 
@@ -26,12 +26,12 @@ def create(request):
     return render(request,'create.html',{'form':form,'submitted':submitted})
 
 def view(request,id):
-    queryset=Recipe.objects.get(id=id)
+    queryset=Product.objects.get(id=id)
     context={'ri':queryset}
     return render(request,'view.html',context)
 
 def edit(request,id):
-    queryset = get_object_or_404(Recipe, id=id)
+    queryset = get_object_or_404(Product, id=id)
     if request.method == "POST":
         form =CreateForm(request.POST,request.FILES,instance=queryset)
         if form.is_valid():
@@ -46,6 +46,6 @@ def edit(request,id):
     return render(request,"create.html",context)
 
 def delete(request,id):
-    queryset = Recipe.objects.get(id=id)
+    queryset = Product.objects.get(id=id)
     queryset.delete()    
     return redirect('/home/')
